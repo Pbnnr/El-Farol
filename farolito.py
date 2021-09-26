@@ -24,7 +24,7 @@ names = ["mean", "week", "mirr_mean_fifty", "mirr_sixty",
          "mirr_fifty", "median", "mirr_mean_sixty"]
 
 
-# Set a random attendance at the first day to start
+# Set a random attendance on the first day to start
 def first_day():
     attendance[0] = random.randint(0, n_agents)
     global passed
@@ -92,15 +92,15 @@ def median(n):
 class Strategy:
     # Strategy function name
     _function: chr
-    # Strategy number used in computation
+    # Strategy number used in the computation
     _n: int
-    # Value assumed by strategy on particular week
+    # Value assumed by strategy on the particular week
     value: int = 0
     # Number of successes of strategy
     success: int = 0
 
 
-# Class of agentes
+# Class of agents
 @dataclass(order=True)
 class Agent:
     # Unique ID
@@ -128,7 +128,7 @@ def agent_generator(agents, number_strats, list_strategies):
 
 # Function to compute the current prediction of each strat
 def strat_pred(list_strats):
-    # For each strategy, computes value
+    # For each strategy, computes its value
     for strat in range(len(list_strats)):
         func = list_strats[strat]._function
         number = list_strats[strat]._n
@@ -184,6 +184,6 @@ if __name__ == '__main__':
     x = np.arange(0, total_weeks, 1)
     fig, ax = plt.subplots()
     ax.plot(x, list(attendance))
-    # If Left mouse button is clicked update the graph with new simulation
+    # If the left mouse button is clicked update the graph with a new simulation
     cid = fig.canvas.mpl_connect('button_press_event', on_click)
     plt.show()
